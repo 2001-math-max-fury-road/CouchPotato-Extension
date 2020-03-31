@@ -6,7 +6,8 @@
   "version": "1.0.0",
   "permissions": [
     "activeTab",
-    "declarativeContent"
+    "declarativeContent",
+    "notifications"
   ],
   "page_action": {
     "default_icon": {
@@ -20,6 +21,14 @@
     "scripts": ["background.js"],
     "persistent": false
   },
+  "content_scripts": [
+    {
+      "matches":["http://www.hulu.com/", "https://www.hulu.com/"],
+      "js": [
+        "notification.js"
+      ]
+    }
+  ],
   "icons": {
     "16": "popcorn-icon.png",
     "48": "popcorn-icon.png",
