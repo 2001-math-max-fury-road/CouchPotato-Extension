@@ -15,8 +15,9 @@ huluPlayer.style.boxSizing = 'border-box';
 // Create and style CouchPotato
 const div = document.createElement('DIV');
 div.setAttribute('id', 'couchPotato');
-const frame = document.createElement('iframe');
-frame.setAttribute('src', 'http://couch-potato-extension.herokuapp.com/');
+const frame = document.createElement('IFRAME');
+frame.setAttribute('src', 'https://couch-potato-extension.herokuapp.com/');
+frame.setAttribute('id', 'chatContainer')
 frame.style.width = '100%';
 frame.style.height = '100%';
 div.appendChild(frame);
@@ -24,7 +25,6 @@ div.appendChild(frame);
 div.style.height = '100%';
 div.style.width = '33%';
 div.style.boxShadow = 'border-box';
-frame.style.backgroundColor = 'green'; // TAKE ME OUT!!
 
 // Append CouchPotato to parent container
 huluParent.appendChild(div);
