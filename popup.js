@@ -1,19 +1,30 @@
+// Get Hulu container elements
 const huluPlayer = document.getElementById('dash-player-container');
 const huluParent = document.getElementsByClassName(
   'Player__container addFocus'
 )[0];
 
-// create element, then append
-// use flexbox on const hulu website to render in thirds
-const div = document.createElement('DIV'); //<div><div/>
+// Manipulate container styling to add flexbox
+huluParent.style.display = 'flex';
+huluParent.style.justifyContent = 'space-between';
+
+huluPlayer.style.width = '67%';
+huluPlayer.style.position = null;
+huluPlayer.style.boxSizing = 'border-box';
+
+// Create and style CouchPotato
+const div = document.createElement('DIV');
 div.setAttribute('id', 'couchPotato');
-const frame = document.createElement('iframe'); //<iframe></iframe>
-frame.setAttribute('src', 'http://couch-potato-extension.herokuapp.com/'); //<iframe src="...">
-div.appendChild(frame); //frame belongs to div
-div.style.position = 'absolute';
+const frame = document.createElement('iframe');
+frame.setAttribute('src', 'http://couch-potato-extension.herokuapp.com/');
+frame.style.width = '100%';
+frame.style.height = '100%';
+div.appendChild(frame);
+
 div.style.height = '100%';
-div.style.width = '50%';
+div.style.width = '33%';
 div.style.boxShadow = 'border-box';
-huluPlayer.style.width = '50%';
+
+// Append CouchPotato to parent container
 huluParent.appendChild(div);
-// hulu.appendChild(div); //div belongs to hulu
+
