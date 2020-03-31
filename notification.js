@@ -1,7 +1,4 @@
-// const popupButton =
-
-// popupButton.addEventListener("click", () => {
-  chrome.runtime.sendMessage('', {
+chrome.runtime.sendMessage('', {
     type: 'notification',
     options: {
       title: 'Couch Potato Info',
@@ -10,4 +7,3 @@
       type: 'basic'
     }
   })
-// })
