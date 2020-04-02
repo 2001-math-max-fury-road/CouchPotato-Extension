@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href-"./style.css" /> -->
     <style>
-      body {
+      /* body {
         background-color: #3dbb3d;
         height: 40px;
         width: 85px;
@@ -15,13 +16,37 @@
         background: #3dbb3d;
         border: black;
         font-weight: bold;
+      } */
+      body {
+        background-color: #000;
+        width: 115px;
+        height: 75px;
+        /* height: 150px;
+        width: 150px; */
+      }
+      button {
+        width: 85px;
+        height: 60px;
+        background: #104547;
+        color:  #c8c8c8;
+        margin: 1em;
+        border: 1pt solid #119da4;
+        /* border: 2pt solid #c1edcc; */
+        padding: 1em;
+        font-weight: bold;
+        /* border-radius: 30px; */
+      }
+      #outer-div {
+        /* padding: .005%; */
+        border: 1pt solid #3dbb3d;
       }
     </style>
     <title>Couch Potato</title>
   </head>
   <body>
-    <button id='clickme'>Start a Couch Party</button>
-    <script src="popup.js"></script>
-  </script>
+    <div id="outer-div">
+      <button id='clickme'>Start a Couch Party</button>
+      <script src="popup.js"></script>
+    </div>
   </body>
 </html>
