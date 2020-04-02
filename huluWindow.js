@@ -48,6 +48,10 @@ playButton.addEventListener('click', event => {
   }
 });
 
+// Add event listener to window pulling name and couchID from iframe's local storage so that we can send the couchID through the API route and emit the message to the correct couch and ensure the player who initiated the play/pause loop doesn't have their button hit twice
+
+// https://levelup.gitconnected.com/share-localstorage-sessionstorage-between-different-domains-eb07581e9384
+
 huluPlayer.addEventListener(
   'message',
   () => {
