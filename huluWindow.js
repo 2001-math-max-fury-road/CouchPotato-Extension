@@ -35,18 +35,18 @@ function randomizeCouchId() {
 }
 
 const huluID = randomizeCouchId();
-localStorage.set("huluID", huluID);
+localStorage.setItem("huluID", huluID);
 
 const playButton = document.getElementsByClassName(
   "controls__playback-button"
 )[0];
 
 playButton.addEventListener("click", (event) => {
-  if (localStorage.couchID && localStorage.username) {
+  if (localStorage.couchId && localStorage.username) {
     if (event.target !== event.currentTarget) {
       // fetch(`http://localhost:3000/api/play-pause/${localstorage.huluID}/${localstorage.couchID}/${localstorage.username}`, {
       fetch(
-        `https://couch-potato-extension.herokuapp.com/api/play-pause/${localStorage.huluID}/${localStorage.couchID}/${localStorage.username}`,
+        `https://couch-potato-extension.herokuapp.com/api/play-pause/${localStorage.huluID}/${localStorage.couchId}/${localStorage.username}`,
         {
           mode: "cors",
         }
@@ -61,22 +61,27 @@ playButton.addEventListener("click", (event) => {
   }
 });
 
-huluPlayer.addEventListener(
+window.addEventListener(
   "message",
-  () => {
-    const messageArray = message.data.split(" ");
-    const messageType = messageArray[0];
-    if (messageType === "play-pause") {
-      const id = messageArray[1];
-      if (id !== huluID) {
-        playButton.click();
-      }
-    } else if (messageType === "couchID") {
-      const couchID = messageArray[1];
-      localStorage.setItem("couchID", couchID);
+  (event) => {
+    console.log('event listener')
+    if (event.origin === 'https://couch-potato-extension.herokuapp.com') {
+      const message = event.data
+      const messageArray = message.split(" ");
+      const messageType = messageArray[0];
+      if (messageType === "play-pause") {
+        const id = messageArray[1];
+        if (id !== huluID) {
+          playButton.click();
+        }
+      } else if (messageType === "couchID") {
+        const couchId = messageArray[1];
+        localStorage.setItem("couchId", couchId);
 
-      const username = messageArray[2];
-      localStorage.setItem("username", username);
+        const username = messageArray[2];
+        localStorage.setItem("username", username);
+      }
+
     }
   },
   false
