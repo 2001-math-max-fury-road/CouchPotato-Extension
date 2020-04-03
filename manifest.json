@@ -4,11 +4,7 @@
   "name": "Couch Potato",
   "description": "tbd",
   "version": "1.0.0",
-  "permissions": [
-    "activeTab",
-    "declarativeContent",
-    "notifications"
-  ],
+  "permissions": ["activeTab", "declarativeContent", "notifications"],
   "page_action": {
     "default_icon": {
       "19": "popcorn-icon.png",
@@ -23,10 +19,8 @@
   },
   "content_scripts": [
     {
-      "matches":["http://www.hulu.com/", "https://www.hulu.com/"],
-      "js": [
-        "notification.js"
-      ]
+      "matches": ["http://www.hulu.com/", "https://www.hulu.com/"],
+      "js": ["notification.js"]
     }
   ],
   "icons": {
