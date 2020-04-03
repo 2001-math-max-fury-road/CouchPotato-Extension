@@ -35,26 +35,29 @@ function randomizeCouchId() {
 }
 
 const huluID = randomizeCouchId();
-localStorage.set('huluID', huluID)
+localStorage.set('huluID', huluID);
 
 const playButton = document.getElementsByClassName(
   'controls__playback-button'
 )[0];
 
-const couch
-
 playButton.addEventListener('click', event => {
-  if (event.target !== event.currentTarget) {
-    // fetch(`http://localhost:3000/api/play-pause/${localstorage.huluID}/${localstorage.couchID}/${localstorage.username}`, {
-      fetch(`https://couch-potato-extension.herokuapp.com/api/play-pause/${localstorage.huluID}/${localstorage.couchID}/${localstorage.username}`, {
-      mode: 'cors',
-    })
-      .then(function(response) {
-        if (response.status === 200) console.log('success');
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+  if (localStorage.couchID && localStorage.username) {
+    if (event.target !== event.currentTarget) {
+      // fetch(`http://localhost:3000/api/play-pause/${localstorage.huluID}/${localstorage.couchID}/${localstorage.username}`, {
+      fetch(
+        `https://couch-potato-extension.herokuapp.com/api/play-pause/${localstorage.huluID}/${localstorage.couchID}/${localstorage.username}`,
+        {
+          mode: 'cors',
+        }
+      )
+        .then(function(response) {
+          if (response.status === 200) console.log('success');
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    }
   }
 });
 
@@ -68,13 +71,12 @@ huluPlayer.addEventListener(
       if (id !== huluID) {
         playButton.click();
       }
-    }
-    if (messageType === 'couchID') {
-      const couchID = messageArray[1]
-      localStorage.set('couchID', couchID)
+    } else if (messageType === 'couchID') {
+      const couchID = messageArray[1];
+      localStorage.set('couchID', couchID);
 
-      const username = messageArray[2]
-      localStorage.set('username', username)
+      const username = messageArray[2];
+      localStorage.set('username', username);
     }
   },
   false
