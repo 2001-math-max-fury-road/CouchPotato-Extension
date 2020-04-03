@@ -45,8 +45,8 @@ const couch
 
 playButton.addEventListener('click', event => {
   if (event.target !== event.currentTarget) {
-    fetch(`http://localhost:3000/api/play-pause/${localstorage.huluID}/${localstorage.couchID}/${localstorage.username}`, {
-      //fetch("https://couch-potato-extension.herokuapp.com/api/play-pause", {
+    // fetch(`http://localhost:3000/api/play-pause/${localstorage.huluID}/${localstorage.couchID}/${localstorage.username}`, {
+      fetch(`https://couch-potato-extension.herokuapp.com/api/play-pause/${localstorage.huluID}/${localstorage.couchID}/${localstorage.username}`, {
       mode: 'cors',
     })
       .then(function(response) {
