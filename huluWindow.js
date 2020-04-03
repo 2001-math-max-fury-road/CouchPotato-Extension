@@ -71,7 +71,7 @@ window.addEventListener(
       const messageType = messageArray[0];
       if (messageType === "play-pause") {
         const id = messageArray[1];
-        if (id !== huluID) {
+        if (id !== localStorage.huluID) {
           playButton.click();
         }
       } else if (messageType === "couchID") {
