@@ -29,13 +29,23 @@ div.style.boxShadow = 'border-box';
 // Append CouchPotato to parent container
 huluParent.appendChild(div);
 
+function randomizeCouchId() {
+  const id = Math.floor(Math.random() * 1000);
+  return id.toString();
+}
+
+const huluID = randomizeCouchId();
+localStorage.set('huluID', huluID)
+
 const playButton = document.getElementsByClassName(
   'controls__playback-button'
 )[0];
 
+const couch
+
 playButton.addEventListener('click', event => {
   if (event.target !== event.currentTarget) {
-    fetch('http://localhost:3000/api/play-pause', {
+    fetch(`http://localhost:3000/api/play-pause/${localstorage.huluID}/${localstorage.couchID}/${localstorage.username}`, {
       //fetch("https://couch-potato-extension.herokuapp.com/api/play-pause", {
       mode: 'cors',
     })
@@ -48,14 +58,24 @@ playButton.addEventListener('click', event => {
   }
 });
 
-// Add event listener to window pulling name and couchID from iframe's local storage so that we can send the couchID through the API route and emit the message to the correct couch and ensure the player who initiated the play/pause loop doesn't have their button hit twice
-
-// https://levelup.gitconnected.com/share-localstorage-sessionstorage-between-different-domains-eb07581e9384
-
 huluPlayer.addEventListener(
   'message',
   () => {
-    playButton.click();
+    const messageArray = message.data.split(' ');
+    const messageType = messageArray[0];
+    if (messageType === 'play-pause') {
+      const id = messageArray[1];
+      if (id !== huluID) {
+        playButton.click();
+      }
+    }
+    if (messageType === 'couchID') {
+      const couchID = messageArray[1]
+      localStorage.set('couchID', couchID)
+
+      const username = messageArray[2]
+      localStorage.set('username', username)
+    }
   },
   false
 );
