@@ -62,16 +62,8 @@ playButton.addEventListener('click', (event) => {
 
       // If the video was playing before button was clicked
       if (localStorage.playing === 'true') {
-        console.log(
-          'inside event listener, expect true:',
-          localStorage.playing
-        );
         // Switch localStorage to false for paused
         localStorage.setItem('playing', 'false');
-        console.log(
-          'inside event listener, expect false:',
-          localStorage.playing
-        );
         // Send backend route notifying other users that video was paused
         fetch(
           `https://couch-potato-extension.herokuapp.com/api/pause/${localStorage.huluID}/${localStorage.couchId}/${localStorage.username}/${urlTime}`,
@@ -87,15 +79,7 @@ playButton.addEventListener('click', (event) => {
           });
       } else {
         // Switch localStorage to true for playing
-        console.log(
-          'inside event listener else statement, expect false:',
-          localStorage.playing
-        );
         localStorage.setItem('playing', 'true');
-        console.log(
-          'inside event listener else statement, expect true:',
-          localStorage.playing
-        );
         // Send backend route notifying other users that video was played
         fetch(
           `https://couch-potato-extension.herokuapp.com/api/play/${localStorage.huluID}/${localStorage.couchId}/${localStorage.username}/${urlTime}`,
@@ -117,10 +101,6 @@ playButton.addEventListener('click', (event) => {
       } else {
         localStorage.setItem('playing', 'true');
       }
-      console.log(
-        'computer autoclicks, expecting true for playing, false for paused',
-        localStorage.playing
-      );
     }
   }
 });
@@ -136,7 +116,6 @@ window.addEventListener(
       if (messageType === 'play-pause') {
         const groupStatus = messageArray[1];
         const id = messageArray[2];
-        console.log('posted message', message);
 
         // If this user didn't start the click cycle
         if (id !== localStorage.huluID) {
