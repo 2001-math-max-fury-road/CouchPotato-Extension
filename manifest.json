@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Couch Potato",
-  "description": "tbd",
+  "description": "Want to watch TV with your friends, but don’t want to leave the comfort of your own couch? Couch Potato lets you stream shows together on Hulu without leaving your couch! ",
   "version": "1.0.0",
   "permissions": ["activeTab", "declarativeContent", "notifications"],
   "page_action": {
