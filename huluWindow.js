@@ -67,7 +67,7 @@ playButton.addEventListener('click', (event) => {
           localStorage.playing
         );
         // Switch localStorage to false for paused
-        localStorage.set('playing', false);
+        localStorage.setItem('playing', false);
         console.log(
           'inside event listener, expect false:',
           localStorage.playing
@@ -91,7 +91,7 @@ playButton.addEventListener('click', (event) => {
           'inside event listener else statement, expect false:',
           localStorage.playing
         );
-        localStorage.set('playing', true);
+        localStorage.setItem('playing', true);
         console.log(
           'inside event listener else statement, expect true:',
           localStorage.playing
@@ -113,9 +113,9 @@ playButton.addEventListener('click', (event) => {
     } else {
       // Flip local storage to keep track of whether video is playing for future clicks
       if (localStorage.playing === true) {
-        localStorage.set('playing', false);
+        localStorage.setItem('playing', false);
       } else {
-        localStorage.set('playing', true);
+        localStorage.setItem('playing', true);
       }
       console.log(
         'computer autoclicks, expecting true for playing, false for paused',
