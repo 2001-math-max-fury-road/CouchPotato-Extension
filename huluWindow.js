@@ -44,9 +44,9 @@ const playButton = document.getElementsByClassName(
 const playStatus = playButton.getAttribute('aria-label');
 
 if (playStatus === 'Pause') {
-  localStorage.setItem('playing', true);
+  localStorage.setItem('playing', 'true');
 } else {
-  localStorage.setItem('playing', false);
+  localStorage.setItem('playing', 'false');
 }
 
 playButton.addEventListener('click', (event) => {
@@ -61,13 +61,13 @@ playButton.addEventListener('click', (event) => {
       const urlTime = timestamp.replace(':', '-');
 
       // If the video was playing before button was clicked
-      if (localStorage.playing === true) {
+      if (localStorage.playing === 'true') {
         console.log(
           'inside event listener, expect true:',
           localStorage.playing
         );
         // Switch localStorage to false for paused
-        localStorage.setItem('playing', false);
+        localStorage.setItem('playing', 'false');
         console.log(
           'inside event listener, expect false:',
           localStorage.playing
@@ -91,7 +91,7 @@ playButton.addEventListener('click', (event) => {
           'inside event listener else statement, expect false:',
           localStorage.playing
         );
-        localStorage.setItem('playing', true);
+        localStorage.setItem('playing', 'true');
         console.log(
           'inside event listener else statement, expect true:',
           localStorage.playing
@@ -112,10 +112,10 @@ playButton.addEventListener('click', (event) => {
       }
     } else {
       // Flip local storage to keep track of whether video is playing for future clicks
-      if (localStorage.playing === true) {
-        localStorage.setItem('playing', false);
+      if (localStorage.playing === 'true') {
+        localStorage.setItem('playing', 'false');
       } else {
-        localStorage.setItem('playing', true);
+        localStorage.setItem('playing', 'true');
       }
       console.log(
         'computer autoclicks, expecting true for playing, false for paused',
@@ -141,10 +141,13 @@ window.addEventListener(
         // If this user didn't start the click cycle
         if (id !== localStorage.huluID) {
           // If localStorage says the video is playing and the initiator clicked pause
-          if (localStorage.playing === true && groupStatus === 'pause') {
+          if (localStorage.playing === 'true' && groupStatus === 'pause') {
             playButton.click();
             // Else if the localStorage says the video is paused and the initiator clicked play
-          } else if (localStorage.playing === false && groupStatus === 'play') {
+          } else if (
+            localStorage.playing === 'false' &&
+            groupStatus === 'play'
+          ) {
             playButton.click();
           }
           // Used if/else if because we don't want play/pause button clicked if video is already paused and someone else hit pause or if video is already playing and somone else hit play
