@@ -37,7 +37,6 @@ function randomizeCouchId() {
 const huluID = randomizeCouchId();
 localStorage.setItem('huluID', huluID);
 
-
 // Create localStorage item to track whether show is playing
 const playButton = document.getElementsByClassName(
   'controls__playback-button'
@@ -59,7 +58,7 @@ playButton.addEventListener('click', (event) => {
       const timestamp = document.getElementsByClassName(
         'controls__time-elapsed'
       )[0].innerText;
-      const urlTime = timestamp.replace(':', '-')
+      const urlTime = timestamp.replace(':', '-');
 
       // If the video was playing before button was clicked
       if (localStorage.playing === true) {
@@ -136,20 +135,3 @@ window.addEventListener(
   },
   false
 );
-
-// TESTING FOR SYNC FEATURE
-// Use playStatus to tell if video is playing or paused and sync up everyone as playing/paused
-// Grab timestamp to send along what time they're playing/pausing at (convert to dash so it doesn't affect url; must re-convert in backend)
-// Update messages to distinguish between play/pause action
-
-// const playStatus = document.getElementsByClassName('controls__playback-button')[0]
-// const clickTo = playStatus.getAttribute('aria-label')
-
-// if (clickTo === 'Play') {
-//   localStorage.setItem('status', false)
-// } else {
-//   localStorage.setItem('status', true)
-// }
-
-// const timestamp = document.getElementsByClassName('controls__time-elapsed')[0].innerText
-// const urlTime = timestamp.split(':').join('-')
