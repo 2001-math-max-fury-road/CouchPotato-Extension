@@ -1,7 +1,5 @@
 const huluPlayer = document.getElementById('dash-player-container');
-const huluParent = document.getElementsByClassName(
-  'Player__container addFocus'
-)[0];
+const huluParent = huluPlayer.parentElement;
 
 huluParent.style.display = 'flex';
 huluParent.style.justifyContent = 'space-between';
