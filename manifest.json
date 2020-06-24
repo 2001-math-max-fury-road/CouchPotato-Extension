@@ -3,7 +3,7 @@
 
   "name": "Couch Potato",
   "description": "Watch Hulu with your friends from the comfort of your own couch with Couch Potato!",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "permissions": ["activeTab", "declarativeContent", "notifications"],
   "page_action": {
     "default_icon": {
