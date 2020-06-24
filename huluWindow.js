@@ -1,8 +1,6 @@
 // Get Hulu container elements
 const huluPlayer = document.getElementById('dash-player-container');
-const huluParent = document.getElementsByClassName(
-  'Player__container addFocus'
-)[0];
+const huluParent = huluPlayer.parentElement;
 
 // Manipulate container styling to add flexbox
 huluParent.style.display = 'flex';
