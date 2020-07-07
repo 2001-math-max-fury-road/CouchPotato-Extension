@@ -1,12 +1,12 @@
-const huluPlayer = document.getElementById('dash-player-container');
-const huluParent = huluPlayer.parentElement;
+const amazonPlayer = document.getElementById('webPlayerContainer');
+const amazonParent = amazonPlayer.parentElement;
 
-huluParent.style.display = 'flex';
-huluParent.style.justifyContent = 'space-between';
+amazonParent.style.display = 'flex';
+amazonParent.style.justifyContent = 'space-between';
 
-huluPlayer.style.width = '67%';
-huluPlayer.style.position = null;
-huluPlayer.style.boxSizing = 'border-box';
+amazonPlayer.style.width = '67%';
+amazonPlayer.style.position = null;
+amazonPlayer.style.boxSizing = 'border-box';
 
 const div = document.createElement('DIV');
 div.setAttribute('id', 'couchPotato');
@@ -21,13 +21,14 @@ div.style.height = '100%';
 div.style.width = '33%';
 div.style.boxShadow = 'border-box';
 
-huluParent.appendChild(div);
+amazonParent.appendChild(div);
 
 function randomizeCouchId() {
   const id = Math.floor(Math.random() * 1000);
   return id.toString();
 }
-
+// -----------------------------------------
+// To Do: Get play pause working, update background.js (manifest.json) so this file runs on Amazon
 const huluID = randomizeCouchId();
 localStorage.setItem('huluID', huluID);
 
